@@ -19,7 +19,7 @@ public class Store {
     
     @Column(name = "manager_staff_id", nullable = false)
     private Long managerStaffId;
-    
+
     @Column(name = "address_id", nullable = false)
     private Long addressId;
     
@@ -29,10 +29,10 @@ public class Store {
     @OneToMany(mappedBy = "storeId")
     private Collection<Staff> staffByStoreId;
 
-    @ManyToOne
-    @JoinColumn(name = "manager_staff_id", referencedColumnName = "staff_id", nullable = false,
-            insertable = false, updatable = false)
-    private Staff staffByManagerStaffId;
+//    @ManyToOne
+//    @JoinColumn(name = "manager_staff_id", referencedColumnName = "staff_id", nullable = false,
+//            insertable = false, updatable = false)
+//    private Staff staffByManagerStaffId;
 
 
 }

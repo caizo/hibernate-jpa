@@ -1,9 +1,12 @@
 package org.pmv.pruebas.hibernatejpa.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,6 +28,6 @@ public class Actor {
     private String lastName;
 
     @Column(name = "last_update", nullable = false)
-    private Timestamp lastUpdate;
+    private LocalDateTime lastUpdate;
 
 }
