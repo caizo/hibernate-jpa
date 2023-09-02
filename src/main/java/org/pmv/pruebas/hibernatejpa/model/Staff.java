@@ -32,9 +32,9 @@ public class Staff {
     
     @Column(name = "email", length = 50)
     private String email;
-    
-    @Column(name = "store_id", nullable = false)
-    private Long storeId;
+
+    @ManyToOne
+    private Store storeId;
     
     @Column(name = "active", nullable = false)
     private byte active;
