@@ -11,9 +11,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "address", schema = "sakila")
 public class Address {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
-    @jakarta.persistence.Column(name = "address_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id", nullable = false)
     private Long addressId;
 
     @Column(name = "address", nullable = false, length = 50)

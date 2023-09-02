@@ -20,19 +20,13 @@ public class Store {
     @Column(name = "manager_staff_id", nullable = false)
     private Long managerStaffId;
 
-    @Column(name = "address_id", nullable = false)
-    private Long addressId;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Address addressId;
     
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "storeId")
+    @OneToMany(mappedBy = "storeId", fetch = FetchType.LAZY)
     private Collection<Staff> staffByStoreId;
-
-//    @ManyToOne
-//    @JoinColumn(name = "manager_staff_id", referencedColumnName = "staff_id", nullable = false,
-//            insertable = false, updatable = false)
-//    private Staff staffByManagerStaffId;
-
 
 }
