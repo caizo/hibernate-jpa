@@ -35,7 +35,7 @@ public class Rental {
     private Customer customerId;
     
     @Column(name = "return_date")
-    private Timestamp returnDate;
+    private LocalDateTime returnDate;
 
     @OneToOne
     @JoinColumn(name = "staff_id", nullable = false)

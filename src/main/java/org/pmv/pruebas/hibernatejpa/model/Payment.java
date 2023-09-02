@@ -19,6 +19,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "payment", schema = "sakila")
 public class Payment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id", nullable = false)

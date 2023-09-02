@@ -16,9 +16,10 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id", nullable = false)
     private Long storeId;
-    
-    @Column(name = "manager_staff_id", nullable = false)
-    private Long managerStaffId;
+
+    @OneToOne
+    @JoinColumn(name = "manager_staff_id", nullable = false)
+    private Staff managerStaffId;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Address addressId;

@@ -27,8 +27,9 @@ public class Film {
     @Column(name = "release_year")
     private Integer releaseYear;
 
-    @Column(name = "language_id", nullable = false)
-    private Integer languageId;
+    @OneToOne
+    @JoinColumn (name = "language_id", nullable = false)
+    private Language languageId;
 
     @Column(name = "original_language_id")
     private Integer originalLanguageId;
