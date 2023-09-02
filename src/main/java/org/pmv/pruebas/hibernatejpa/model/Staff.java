@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -46,6 +47,6 @@ public class Staff {
     private String password;
     
     @Column(name = "last_update", nullable = false)
-    private Timestamp lastUpdate;
+    private LocalDateTime lastUpdate;
 
 }

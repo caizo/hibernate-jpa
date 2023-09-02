@@ -24,8 +24,8 @@ public class Inventory {
     @Column(name = "film_id", nullable = false)
     private Long filmId;
 
-    @Column(name = "store_id", nullable = false)
-    private Long storeId;
+    @ManyToOne()
+    private Store storeId;
 
     @Column(name = "last_update", nullable = false)
     private LocalDateTime lastUpdate;

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,8 +18,8 @@ public class Customer {
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
-    @Column(name = "store_id", nullable = false)
-    private Long storeId;
+    @OneToMany
+    private List<Store> storeId;
 
     @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;

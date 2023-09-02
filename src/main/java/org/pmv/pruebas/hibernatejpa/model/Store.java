@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Getter
@@ -24,7 +24,7 @@ public class Store {
     private Address addressId;
     
     @Column(name = "last_update", nullable = false)
-    private Timestamp lastUpdate;
+    private LocalDateTime lastUpdate;
 
     @OneToMany(mappedBy = "storeId", fetch = FetchType.LAZY)
     private Collection<Staff> staffByStoreId;
