@@ -23,8 +23,9 @@ public class City {
     @Column(name = "city", nullable = false, length = 50)
     private String city;
 
-    @Column(name = "country_id", nullable = false)
-    private Long countryId;
+    @OneToOne
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country countryId;
 
     @Column(name = "last_update", nullable = false)
     private LocalDateTime lastUpdate;

@@ -24,9 +24,9 @@ public class Staff {
     
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
-    
-    @Column(name = "address_id", nullable = false)
-    private Long addressId;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Address addressId;
     
     @Column(name = "picture")
     private byte[] picture;

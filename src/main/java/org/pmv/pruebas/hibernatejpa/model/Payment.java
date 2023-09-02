@@ -23,15 +23,18 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id", nullable = false)
     private Long paymentId;
-    
-    @Column(name = "customer_id", nullable = false)
-    private Long customerId;
-    
-    @Column(name = "staff_id", nullable = false)
-    private Long staffId;
-    
-    @Column(name = "rental_id")
-    private Integer rentalId;
+
+    @OneToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customerId;
+
+    @OneToOne
+    @JoinColumn(name = "staff_id", nullable = false)
+    private Staff staffId;
+
+    @ManyToOne()
+    @JoinColumn(name = "rental_id")
+    private Rental rentalId;
     
     @Column(name = "amount", nullable = false, precision = 2)
     private BigDecimal amount;

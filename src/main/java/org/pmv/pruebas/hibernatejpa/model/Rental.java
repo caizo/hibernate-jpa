@@ -25,18 +25,21 @@ public class Rental {
     
     @Column(name = "rental_date", nullable = false)
     private LocalDateTime rentalDate;
-    
-    @Column(name = "inventory_id", nullable = false)
-    private Long inventoryId;
-    
-    @Column(name = "customer_id", nullable = false)
-    private Long customerId;
+
+    @OneToOne
+    @JoinColumn(name = "inventory_id", nullable = false)
+    private Inventory inventoryId;
+
+    @OneToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customerId;
     
     @Column(name = "return_date")
     private Timestamp returnDate;
-    
-    @Column(name = "staff_id", nullable = false)
-    private Long staffId;
+
+    @OneToOne
+    @JoinColumn(name = "staff_id", nullable = false)
+    private Staff staffId;
     
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;

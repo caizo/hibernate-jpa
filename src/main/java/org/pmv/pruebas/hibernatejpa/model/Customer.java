@@ -30,8 +30,8 @@ public class Customer {
     @Column(name = "email", length = 50)
     private String email;
 
-    @Column(name = "address_id", nullable = false)
-    private Long addressId;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Address addressId;
 
     @Column(name = "active", nullable = false)
     private byte active;
