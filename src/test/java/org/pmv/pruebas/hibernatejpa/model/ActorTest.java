@@ -46,10 +46,18 @@ class ActorTest {
     }
 
     @Test
+    void getById() {
+
+        Actor actor = em.find(Actor.class, 1L);
+
+        assertEquals("PENELOPE", actor.getFirstName());
+    }
+
+    @Test
     void getByFirstNameTest2() {
         String query = "select a from Actor a where a.firstName=?1";
 
-        Query q = em.createQuery(query, Actor.class);
+        TypedQuery<Actor> q = em.createQuery(query, Actor.class);
 
         q.setParameter(1, "NICK");
 
@@ -63,11 +71,13 @@ class ActorTest {
         String query = "select a from Actor a where a.lastUpdate > :updateDate";
 
         TypedQuery<Actor> tQuery = em.createQuery(query, Actor.class);
+
         tQuery.setParameter("updateDate", LocalDateTime.of(2006, 1, 1, 0, 0));
 
         List<Actor> resultList = tQuery.getResultList();
 
         assertFalse(resultList.isEmpty());
+
         resultList.forEach(System.out::println);
     }
 
