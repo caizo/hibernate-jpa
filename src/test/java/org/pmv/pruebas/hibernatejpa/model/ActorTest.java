@@ -2,49 +2,73 @@ package org.pmv.pruebas.hibernatejpa.model;
 
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.pmv.pruebas.hibernatejpa.util.JpaUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class ActorTest {
 
     private static EntityManager em;
+
     @BeforeAll
     static void setUp() {
-        em = JpaUtil.getEM();
+        em = JpaUtil.getEntityManager();
     }
 
 
     @Test
-    void getActorsTest() {
+    void getAllTest() {
         List<Actor> actors = em.createQuery("select a from Actor a", Actor.class)
                 .getResultList();
         assertFalse(actors.isEmpty());
     }
 
     @Test
-    void getActorsCalledNick() {
-        TypedQuery<Actor> query = em.createQuery("select a from Actor a where a.firstName=:firstName", Actor.class);
-        query.setParameter("firstName", "NICK");
-        List<Actor> nicks = query.getResultList();
-        assertEquals(3, nicks.size());
+    void getByFirstNameTest() {
+        String query = "select a from Actor a where a.firstName=:firstName";
+
+        TypedQuery<Actor> tQuery = em.createQuery(query, Actor.class);
+
+        tQuery.setParameter("firstName", "NICK");
+
+        List<Actor> actors = tQuery.getResultList();
+
+        assertEquals(3, actors.size());
     }
 
+    @Test
+    void getByFirstNameTest2() {
+        String query = "select a from Actor a where a.firstName=?1";
+
+        Query q = em.createQuery(query, Actor.class);
+
+        q.setParameter(1, "NICK");
+
+        List<Actor> actors2 = q.getResultList();
+
+        assertEquals(3, actors2.size());
+    }
 
     @Test
-    void getActorsUpdatedOnYear() {
-        LocalDateTime updateDate = LocalDateTime.of(2006, 1, 1, 0, 0);
-        TypedQuery<Actor> query = em.createQuery("select a from Actor a where a.lastUpdate > :updateDate", Actor.class);
-        query.setParameter("updateDate", updateDate);
-        List<Actor> resultList = query.getResultList();
+    void getByLastUpdateTest() {
+        String query = "select a from Actor a where a.lastUpdate > :updateDate";
+
+        TypedQuery<Actor> tQuery = em.createQuery(query, Actor.class);
+        tQuery.setParameter("updateDate", LocalDateTime.of(2006, 1, 1, 0, 0));
+
+        List<Actor> resultList = tQuery.getResultList();
+
         assertFalse(resultList.isEmpty());
         resultList.forEach(System.out::println);
-
     }
 
     @AfterAll

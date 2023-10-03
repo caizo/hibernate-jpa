@@ -21,7 +21,7 @@ public class Store {
     @JoinColumn(name = "manager_staff_id", nullable = false)
     private Staff managerStaffId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
     private Address addressId;
     
     @Column(name = "last_update", nullable = false)

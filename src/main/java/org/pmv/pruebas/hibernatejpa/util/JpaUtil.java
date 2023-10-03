@@ -12,7 +12,7 @@ public class JpaUtil {
         return Persistence.createEntityManagerFactory("default");
     }
 
-    public static EntityManager getEM() {
+    public static EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 }

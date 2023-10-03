@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,14 +29,14 @@ public class Customer {
     @Column(name = "email", length = 50)
     private String email;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
     private Address addressId;
 
     @Column(name = "active", nullable = false)
     private byte active;
 
     @Column(name = "create_date", nullable = false)
-    private Timestamp createDate;
+    private LocalDateTime createDate;
 
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
