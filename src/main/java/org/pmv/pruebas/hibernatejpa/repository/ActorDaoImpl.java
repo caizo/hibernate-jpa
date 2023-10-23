@@ -3,7 +3,6 @@ package org.pmv.pruebas.hibernatejpa.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.pmv.pruebas.hibernatejpa.model.Actor;
-import org.pmv.pruebas.hibernatejpa.util.JpaUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,7 +10,11 @@ import java.util.NoSuchElementException;
 
 public class ActorDaoImpl extends GenericDaoJpa<Actor, Long> implements ActorDao {
 
-    private EntityManager entityManager = JpaUtil.getEntityManager();
+    private EntityManager entityManager;
+
+    public ActorDaoImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public List<Actor> getByFirstName(String firstName) {
