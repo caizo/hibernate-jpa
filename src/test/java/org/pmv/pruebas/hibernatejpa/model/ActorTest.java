@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ActorTest {
 
-    private static EntityManager entityManager = JpaUtil.getEntityManager();
-    private ActorService actorService = new ActorServiceImpl(entityManager);
+    private static final EntityManager entityManager = JpaUtil.getEntityManager();
+    private final ActorService actorService = new ActorServiceImpl(entityManager);
 
     @Test
     void getAllTest() {
@@ -36,14 +36,12 @@ class ActorTest {
         assertEquals("GUINESS", actor.getLastName());
     }
 
-
     @Test
     void getByLastUpdateTest() {
-        LocalDateTime lastUpdate = LocalDateTime.of(2023, 10, 23, 0, 0);
+        LocalDateTime lastUpdate = LocalDateTime.of(2023, 10, 22, 22, 0);
         List<Actor> actors = actorService.getByLastUpdate(lastUpdate);
         assertEquals(4, actors.size());
     }
-
 
     @AfterAll
     static void tearDown() {
