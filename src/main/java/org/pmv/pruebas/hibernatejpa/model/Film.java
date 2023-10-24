@@ -47,7 +47,7 @@ public class Film {
     private BigDecimal replacementCost;
 
     @Column(name = "rating")
-    private Integer rating;
+    private String rating;
 
     @Column(name = "special_features")
     private String specialFeatures;
