@@ -1,0 +1,11 @@
+package org.pmv.pruebas.hibernatejpa.service;
+
+import org.pmv.pruebas.hibernatejpa.model.Film;
+
+import java.util.List;
+
+public interface FilmService {
+
+
+    List<Film> getAll();
+}
