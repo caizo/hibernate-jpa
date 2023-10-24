@@ -98,5 +98,22 @@ public class ActorDaoImpl extends GenericDaoJpa<Actor, Long> implements ActorDao
         return typedQuery.getResultList();
     }
 
+    @Override
+    public List<ActorDto> getActorsByPosition(Long p1, Long p2) {
+        TypedQuery<ActorDto> typedQuery =
+                entityManager.createQuery("select new org.pmv.pruebas.hibernatejpa.dto.ActorDto(concat(a.firstName,' ',a.lastName), a.lastUpdate) from Actor a where a.id between :p1 and :p2", ActorDto.class);
+        typedQuery.setParameter("p1", p1);
+        typedQuery.setParameter("p2", p2);
+
+        return typedQuery.getResultList();
+    }
+
+    @Override
+    public List<ActorDto> getActorsByIdDesc() {
+        TypedQuery<ActorDto> typedQuery =
+                entityManager.createQuery("select new org.pmv.pruebas.hibernatejpa.dto.ActorDto(concat(a.firstName,' ',a.lastName), a.lastUpdate) from Actor a order by a.id desc", ActorDto.class);
+        return typedQuery.getResultList();
+    }
+
 
 }

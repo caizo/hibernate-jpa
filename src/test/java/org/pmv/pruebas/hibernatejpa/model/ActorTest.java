@@ -91,6 +91,29 @@ class ActorTest {
         assertEquals(17, actors.size());
     }
 
+
+    @Test
+    void getActorsByPositionTest() {
+        Long p1 = 1L;
+        Long p2 = 5L;
+        List<ActorDto> actors =  this.actorService.getActorsByPosition(p1, p2);
+        assertEquals(5, actors.size());
+    }
+
+    @Test
+    void getActorsByIdDescTest() {
+        List<ActorDto> actors =  this.actorService.getActorsByIdDesc();
+
+        assertEquals(206, actors.size());
+
+        ActorDto first = actors.get(0);
+        assertEquals("Al Pacino", first.getFullName());
+
+        ActorDto last = actors.get(actors.size() - 1);
+        assertEquals("PENELOPE GUINESS", last.getFullName());
+
+    }
+
     @AfterAll
     static void tearDown() {
         entityManager.clear();

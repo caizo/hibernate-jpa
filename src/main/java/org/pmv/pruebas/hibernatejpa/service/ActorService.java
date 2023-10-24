@@ -30,4 +30,8 @@ public interface ActorService {
     Long getNumberOfActorsWithDifferentName();
 
     List<ActorDto> getActorsWithSpecificTextInName(String text);
+
+    List<ActorDto> getActorsByPosition(Long p1, Long p2);
+
+    List<ActorDto> getActorsByIdDesc();
 }

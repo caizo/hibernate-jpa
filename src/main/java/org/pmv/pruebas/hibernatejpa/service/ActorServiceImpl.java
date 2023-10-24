@@ -87,4 +87,14 @@ public class ActorServiceImpl implements ActorService {
     public List<ActorDto> getActorsWithSpecificTextInName(String text) {
         return this.actorDao.getActorsWithSpecificTextInName(text);
     }
+
+    @Override
+    public List<ActorDto> getActorsByPosition(Long p1, Long p2) {
+        return this.actorDao.getActorsByPosition(p1, p2);
+    }
+
+    @Override
+    public List<ActorDto> getActorsByIdDesc() {
+        return this.actorDao.getActorsByIdDesc();
+    }
 }
