@@ -31,4 +31,9 @@ public class FilmServiceImpl implements FilmService {
     public List<FilmDto> getShortestFilms() {
         return this.filmDao.getShortestFilms();
     }
+
+    @Override
+    public List<FilmDto> getFilmsThatLastARangeOfMinutes(Integer range1, Integer range2) {
+        return this.filmDao.getFilmsThatLastARangeOfMinutes(range1, range2);
+    }
 }

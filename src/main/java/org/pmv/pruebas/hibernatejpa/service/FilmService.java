@@ -13,4 +13,6 @@ public interface FilmService {
     List<Film> getFilmsLongerThanNMinutes(int minutes);
 
     List<FilmDto> getShortestFilms();
+
+    List<FilmDto> getFilmsThatLastARangeOfMinutes(Integer range1, Integer range2);
 }

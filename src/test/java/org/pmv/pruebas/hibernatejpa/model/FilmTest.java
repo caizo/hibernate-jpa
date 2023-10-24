@@ -39,6 +39,16 @@ class FilmTest {
         assertEquals(5, shortestFilms.size());
     }
 
+    @Test
+    void getFilmsThatLastARangeOfMinutes() {
+        Integer range1 = 60;
+        Integer range2 = 120;
+
+        List<FilmDto> films =
+                this.filmService.getFilmsThatLastARangeOfMinutes(range1, range2);
+        assertEquals(17, films.size());
+    }
+
     @AfterAll
     static void tearDown() {
         entityManager.clear();
