@@ -73,8 +73,30 @@ public class ActorDaoImpl extends GenericDaoJpa<Actor, Long> implements ActorDao
 
     @Override
     public List<ActorDto> getActorsFullNameDto() {
-        return entityManager.createQuery("select new org.pmv.pruebas.hibernatejpa.dto.ActorDto(concat(a.firstName,' ', a.lastName),a.lastUpdate) from Actor a", ActorDto.class)
+        return entityManager.createQuery("select new org.pmv.pruebas.hibernatejpa.dto.ActorDto(upper(concat(a.firstName,' ', a.lastName)),a.lastUpdate) from Actor a", ActorDto.class)
                 .getResultList();
     }
+
+    @Override
+    public List<String> getActorsDistinctName() {
+        return entityManager.createQuery("select distinct(a.firstName) from Actor a", String.class)
+                .getResultList();
+
+    }
+
+    @Override
+    public Long getNumberOfActorsWithDifferentName() {
+        return entityManager.createQuery("select count(distinct(a.firstName)) from Actor a", Long.class)
+                .getSingleResult();
+    }
+
+    @Override
+    public List<ActorDto> getActorsWithSpecificTextInName(String text) {
+        TypedQuery<ActorDto> typedQuery =
+                entityManager.createQuery("select new org.pmv.pruebas.hibernatejpa.dto.ActorDto(concat(a.firstName,' ',a.lastName), a.lastUpdate) from Actor a where a.firstName like :text", ActorDto.class);
+        typedQuery.setParameter("text", "%" + text + "%");
+        return typedQuery.getResultList();
+    }
+
 
 }

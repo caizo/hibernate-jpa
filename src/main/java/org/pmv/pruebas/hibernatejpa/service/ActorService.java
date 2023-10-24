@@ -24,4 +24,10 @@ public interface ActorService {
     List<Object[]> getActorsFullName();
 
     List<ActorDto> getActorsFullNameDto();
+
+    List<String> getActorsDistinctName();
+
+    Long getNumberOfActorsWithDifferentName();
+
+    List<ActorDto> getActorsWithSpecificTextInName(String text);
 }

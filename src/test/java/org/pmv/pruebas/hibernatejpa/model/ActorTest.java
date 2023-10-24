@@ -61,14 +61,34 @@ class ActorTest {
 
     @Test
     void getActorsDtoTest() {
-        List<ActorDto> actors = actorService.getActorsFullNameDto();
+        List<ActorDto> dtos = actorService.getActorsFullNameDto();
 
-        ActorDto first = actors.get(0);
+        ActorDto first = dtos.get(0);
         assertEquals(first.getFullName(),"PENELOPE GUINESS");
 
-        ActorDto last = actors.get(actors.size() - 1);
-        assertEquals(last.getFullName(),"Al Pacino");
+        ActorDto last = dtos.get(dtos.size() - 1);
+        assertEquals(last.getFullName(),"AL PACINO");
 
+    }
+
+    @Test
+    void getActorsDistinctNameTest() {
+        List<String> actors = this.actorService.getActorsDistinctName();
+        assertEquals(129, actors.size());
+    }
+
+    @Test
+    void getNumberOfActorsWithDifferentNameTest() {
+        Long result = this.actorService.getNumberOfActorsWithDifferentName();
+        assertEquals(129, result);
+    }
+
+
+    @Test
+    void getActorsWithSpecificTextInNameTest() {
+        String text = "RE";
+        List<ActorDto> actors = this.actorService.getActorsWithSpecificTextInName(text);
+        assertEquals(17, actors.size());
     }
 
     @AfterAll

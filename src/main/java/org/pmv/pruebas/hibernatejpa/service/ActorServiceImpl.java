@@ -72,4 +72,19 @@ public class ActorServiceImpl implements ActorService {
     public List<ActorDto> getActorsFullNameDto() {
         return this.actorDao.getActorsFullNameDto();
     }
+
+    @Override
+    public List<String> getActorsDistinctName() {
+        return this.actorDao.getActorsDistinctName();
+    }
+
+    @Override
+    public Long getNumberOfActorsWithDifferentName() {
+        return this.actorDao.getNumberOfActorsWithDifferentName();
+    }
+
+    @Override
+    public List<ActorDto> getActorsWithSpecificTextInName(String text) {
+        return this.actorDao.getActorsWithSpecificTextInName(text);
+    }
 }
