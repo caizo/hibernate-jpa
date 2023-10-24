@@ -18,4 +18,6 @@ public interface ActorDao {
     List<Actor> getByLastUpdate(LocalDateTime lastUpdate);
 
     List<Actor> getAll();
+
+    List<Object[]> getActorsFullName();
 }

@@ -20,4 +20,5 @@ public interface ActorService {
 
     void delete(Long id);
 
+    List<Object[]> getActorsFullName();
 }

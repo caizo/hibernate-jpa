@@ -61,4 +61,9 @@ public class ActorServiceImpl implements ActorService {
             entityManager.getTransaction().rollback();
         }
     }
+
+    @Override
+    public List<Object[]> getActorsFullName() {
+        return this.actorDao.getActorsFullName();
+    }
 }

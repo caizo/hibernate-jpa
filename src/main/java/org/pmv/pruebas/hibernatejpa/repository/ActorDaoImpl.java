@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 
 public class ActorDaoImpl extends GenericDaoJpa<Actor, Long> implements ActorDao {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public ActorDaoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -61,6 +61,12 @@ public class ActorDaoImpl extends GenericDaoJpa<Actor, Long> implements ActorDao
     @Override
     public List<Actor> getAll() {
         return entityManager.createQuery("select a from Actor a", Actor.class)
+                .getResultList();
+    }
+
+    @Override
+    public List<Object[]> getActorsFullName() {
+        return entityManager.createQuery("select a.firstName, a.lastName from Actor a", Object[].class)
                 .getResultList();
     }
 

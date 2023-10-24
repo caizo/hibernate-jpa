@@ -43,6 +43,21 @@ class ActorTest {
         assertEquals(4, actors.size());
     }
 
+    @Test
+    void getActorsFullName() {
+        List<Object[]> actors = actorService.getActorsFullName();
+        assertEquals(206, actors.size());
+
+        Object[] first = actors.get(0);
+        assertEquals(first[0],"PENELOPE");
+        assertEquals(first[1],"GUINESS");
+
+        Object[] last = actors.get(actors.size() - 1);
+        assertEquals(last[0],"Al");
+        assertEquals(last[1],"Pacino");
+
+    }
+
     @AfterAll
     static void tearDown() {
         entityManager.clear();
