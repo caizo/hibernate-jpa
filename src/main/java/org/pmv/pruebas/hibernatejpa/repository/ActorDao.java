@@ -1,5 +1,6 @@
 package org.pmv.pruebas.hibernatejpa.repository;
 
+import org.pmv.pruebas.hibernatejpa.dto.ActorDto;
 import org.pmv.pruebas.hibernatejpa.model.Actor;
 
 import java.time.LocalDateTime;
@@ -20,4 +21,6 @@ public interface ActorDao {
     List<Actor> getAll();
 
     List<Object[]> getActorsFullName();
+
+    List<ActorDto> getActorsFullNameDto();
 }

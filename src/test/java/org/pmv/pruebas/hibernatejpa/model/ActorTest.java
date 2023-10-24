@@ -4,6 +4,7 @@ package org.pmv.pruebas.hibernatejpa.model;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.pmv.pruebas.hibernatejpa.dto.ActorDto;
 import org.pmv.pruebas.hibernatejpa.service.ActorService;
 import org.pmv.pruebas.hibernatejpa.service.ActorServiceImpl;
 import org.pmv.pruebas.hibernatejpa.util.JpaUtil;
@@ -44,7 +45,7 @@ class ActorTest {
     }
 
     @Test
-    void getActorsFullName() {
+    void getActorsFullNameTest() {
         List<Object[]> actors = actorService.getActorsFullName();
         assertEquals(206, actors.size());
 
@@ -55,6 +56,18 @@ class ActorTest {
         Object[] last = actors.get(actors.size() - 1);
         assertEquals(last[0],"Al");
         assertEquals(last[1],"Pacino");
+
+    }
+
+    @Test
+    void getActorsDtoTest() {
+        List<ActorDto> actors = actorService.getActorsFullNameDto();
+
+        ActorDto first = actors.get(0);
+        assertEquals(first.getFullName(),"PENELOPE GUINESS");
+
+        ActorDto last = actors.get(actors.size() - 1);
+        assertEquals(last.getFullName(),"Al Pacino");
 
     }
 

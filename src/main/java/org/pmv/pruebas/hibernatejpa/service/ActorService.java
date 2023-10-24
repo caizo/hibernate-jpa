@@ -1,5 +1,6 @@
 package org.pmv.pruebas.hibernatejpa.service;
 
+import org.pmv.pruebas.hibernatejpa.dto.ActorDto;
 import org.pmv.pruebas.hibernatejpa.model.Actor;
 
 import java.time.LocalDateTime;
@@ -21,4 +22,6 @@ public interface ActorService {
     void delete(Long id);
 
     List<Object[]> getActorsFullName();
+
+    List<ActorDto> getActorsFullNameDto();
 }

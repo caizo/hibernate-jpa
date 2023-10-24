@@ -2,6 +2,7 @@ package org.pmv.pruebas.hibernatejpa.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.pmv.pruebas.hibernatejpa.dto.ActorDto;
 import org.pmv.pruebas.hibernatejpa.model.Actor;
 
 import java.time.LocalDateTime;
@@ -67,6 +68,12 @@ public class ActorDaoImpl extends GenericDaoJpa<Actor, Long> implements ActorDao
     @Override
     public List<Object[]> getActorsFullName() {
         return entityManager.createQuery("select a.firstName, a.lastName from Actor a", Object[].class)
+                .getResultList();
+    }
+
+    @Override
+    public List<ActorDto> getActorsFullNameDto() {
+        return entityManager.createQuery("select new org.pmv.pruebas.hibernatejpa.dto.ActorDto(concat(a.firstName,' ', a.lastName),a.lastUpdate) from Actor a", ActorDto.class)
                 .getResultList();
     }
 

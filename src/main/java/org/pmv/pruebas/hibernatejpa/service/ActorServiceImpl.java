@@ -1,6 +1,7 @@
 package org.pmv.pruebas.hibernatejpa.service;
 
 import jakarta.persistence.EntityManager;
+import org.pmv.pruebas.hibernatejpa.dto.ActorDto;
 import org.pmv.pruebas.hibernatejpa.model.Actor;
 import org.pmv.pruebas.hibernatejpa.repository.ActorDao;
 import org.pmv.pruebas.hibernatejpa.repository.ActorDaoImpl;
@@ -65,5 +66,10 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public List<Object[]> getActorsFullName() {
         return this.actorDao.getActorsFullName();
+    }
+
+    @Override
+    public List<ActorDto> getActorsFullNameDto() {
+        return this.actorDao.getActorsFullNameDto();
     }
 }
