@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.pmv.pruebas.hibernatejpa.dto.ActorDto;
 import org.pmv.pruebas.hibernatejpa.service.ActorService;
 import org.pmv.pruebas.hibernatejpa.service.ActorServiceImpl;
-import org.pmv.pruebas.hibernatejpa.util.JpaUtil;
+import org.pmv.pruebas.hibernatejpa.util.JpaUtilTest;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ActorTest {
 
-    private static final EntityManager entityManager = JpaUtil.getEntityManager();
+    private static final EntityManager entityManager = JpaUtilTest.getEntityManager();
     private final ActorService actorService = new ActorServiceImpl(entityManager);
 
     @Test

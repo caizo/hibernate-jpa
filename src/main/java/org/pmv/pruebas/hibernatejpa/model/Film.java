@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "film", schema = "sakila")
+@Table(name = "film")
 public class Film {
 
     @Id
@@ -18,17 +18,17 @@ public class Film {
     @Column(name = "film_id", nullable = false)
     private Long filmId;
 
-    @Column(name = "title", nullable = false, length = 128)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "description", length = -1)
+    @Column(name = "description")
     private String description;
 
     @Column(name = "release_year")
     private Integer releaseYear;
 
     @OneToOne
-    @JoinColumn (name = "language_id", nullable = false)
+    @JoinColumn(name = "language_id", nullable = false)
     private Language languageId;
 
     @Column(name = "original_language_id")
@@ -52,7 +52,8 @@ public class Film {
     @Column(name = "special_features")
     private String specialFeatures;
 
-    @Column(name = "last_update", nullable = false)
-    private LocalDateTime lastUpdate;
+    @Embedded
+    private Audit audit = new Audit();
+
 
 }

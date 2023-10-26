@@ -10,6 +10,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @Entity
+@Table(name = "store")
 public class Store {
 
     @Id
@@ -18,10 +19,11 @@ public class Store {
     private Long storeId;
 
     @OneToOne
-    @JoinColumn(name = "manager_staff_id", nullable = false)
+    @JoinColumn(name = "manager_staff_id")
     private Staff managerStaffId;
 
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address addressId;
     
     @Column(name = "last_update", nullable = false)

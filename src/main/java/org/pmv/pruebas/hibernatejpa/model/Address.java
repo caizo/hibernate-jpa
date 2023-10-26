@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "address", schema = "sakila")
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -36,7 +36,7 @@ public class Address {
     @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 
-    @Column(name = "location", nullable = false)
+    @Column(name = "location")
     private String location;
 
     @Column(name = "last_update", nullable = false)

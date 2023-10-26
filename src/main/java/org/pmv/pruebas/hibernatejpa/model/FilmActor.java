@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "film_actor", schema = "sakila")
+@Table(name = "film_actor")
 @IdClass(FilmActorPK.class)
 public class FilmActor {
 

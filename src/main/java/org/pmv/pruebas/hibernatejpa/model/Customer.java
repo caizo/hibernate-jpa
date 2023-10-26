@@ -10,8 +10,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "customer", schema = "sakila")
+@Table(name = "customer")
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", nullable = false)

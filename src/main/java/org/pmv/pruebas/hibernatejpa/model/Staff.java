@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@Table(name = "staff")
 public class Staff {
 
     @Id
@@ -23,6 +24,7 @@ public class Staff {
     private String lastName;
 
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address addressId;
 
     @Column(name = "picture")
@@ -32,6 +34,7 @@ public class Staff {
     private String email;
 
     @ManyToOne
+    @JoinColumn(name = "store_id", nullable = false)
     private Store storeId;
 
     @Column(name = "active", nullable = false)

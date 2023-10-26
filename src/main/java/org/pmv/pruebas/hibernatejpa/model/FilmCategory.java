@@ -15,7 +15,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "film_category", schema = "sakila")
+@Table(name = "film_category")
 @IdClass(FilmCategoryPK.class)
 public class FilmCategory {
 

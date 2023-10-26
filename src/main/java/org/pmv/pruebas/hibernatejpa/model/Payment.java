@@ -17,7 +17,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "payment", schema = "sakila")
+@Table(name = "payment")
 public class Payment {
 
     @Id
